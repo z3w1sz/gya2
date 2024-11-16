@@ -1,0 +1,16 @@
+# Ignorar el archivo .env dentro de backend
+backend/.env
+.env
+
+
+# Ignorar archivos de configuración de Python
+*.pyc
+__pycache__/
+
+# Ignorar el directorio de entornos virtuales
+venv/
+.venv/
+
+# Ignorar archivos temporales de editores de texto
+.DS_Store
+*.swp

@@ -1,0 +1,99 @@
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__wrapper {
+  width: 60%;
+  min-height: 60dvh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  background-color: #333;
+  border-radius: 1rem;
+  padding: 0 2rem;
+  min-width: 720px;
+}
+
+.profile__img-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile__img {
+  min-width: 128px;
+  min-height: 128px;
+  width: fit-content;
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+}
+
+.profile__info-data {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.profile__info-data label {
+  display: flex;
+}
+
+#googleUser-input-name,
+#googleUser-input-email {
+  background-color: #0000;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.profile__info button {
+  padding: 8px 24px;
+  background-color: var(--color-accent);
+}
+
+.profile__logout-button {
+  display: flex;
+  gap: 0.25rem;
+  background-color: #111 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__wrapper {
+    flex-direction: column;
+    min-width: auto;
+    width: 90%;
+    padding-bottom: 2rem;
+  }
+
+  .profile__img-container {
+    flex: none;
+    margin: 2rem 0;
+  }
+
+  .profile__info {
+    flex: 1;
+    width: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+.auth-loading__container {
+  height: 80dvh;
+  display: grid;
+  place-content: center;
+  margin-bottom: 64px;
+}
+
+.auth-loading__icon {
+  animation: rotate 0.9s infinite both;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}

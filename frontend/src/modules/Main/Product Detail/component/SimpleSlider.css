@@ -1,0 +1,61 @@
+/* SimpleSlider.css */
+.slider {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider-image {
+  border-radius: 0.5rem;
+  min-height: 360px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.2s ease;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: var(--color-accent);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  height: 80px;
+  width: 80px;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.prev {
+  left: -40px;
+  justify-content: end;
+}
+
+.next {
+  right: -40px;
+  justify-content: start;
+}
+
+.slider-dots {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: var(--color-accent);
+}

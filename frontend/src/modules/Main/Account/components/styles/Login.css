@@ -1,0 +1,179 @@
+.login {
+  padding: 1rem;
+  background-color: #222;
+  margin: 0 auto;
+  border-radius: 1rem;
+  min-height: 80dvh;
+  width: 70%;
+  display: flex;
+}
+
+.login__image {
+  flex: 1;
+  background-image: url("/src/assets/login.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.login__container {
+  flex: 1.2;
+  display: flex;
+}
+
+.login__wrapper {
+  margin: auto;
+  width: 65%;
+}
+
+.login__wrapper h2 {
+  text-align: center;
+}
+
+.login__google-button {
+  width: 100%;
+  padding: 0.9rem 2rem;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  gap: 8px;
+  background-color: #333;
+}
+
+.login__divider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem 0;
+}
+
+.login__or-divider {
+  width: 40%;
+  height: 1px;
+  background-color: #696969;
+}
+
+.login__divider p {
+  font-size: 0.8rem;
+  color: #b4b4b4;
+}
+
+.login__input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.login__input-container > input {
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.8rem;
+  font-family: inherit;
+  border: none;
+  background-color: #111;
+  outline: none;
+}
+
+.login__password-wrapper {
+  width: 100%;
+  background-color: #111;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login__password-wrapper input {
+  outline: none;
+  border: none;
+  background-color: #0000;
+  font-family: inherit;
+  font-size: 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+.login__password-wrapper button {
+  background-color: #0000;
+  display: flex;
+}
+
+.login__form button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--color-accent);
+  margin-top: 1rem;
+  opacity: 1;
+  box-shadow: none;
+  transition: opacity 0.3s, box-shadow 0.3s;
+}
+
+.login__google-button,
+.login__password-wrapper,
+.login__input-container > input {
+  box-shadow: 0 0 4px 0 #0004;
+  border: 1px solid #444;
+  transition: box-shadow 0.2s, border 0.3s, background-color 0.3s;
+}
+
+.login__google-button:hover {
+  background-color: #222;
+}
+
+.login__google-button:hover,
+.login__password-wrapper:hover,
+.login__input-container:hover > input {
+  box-shadow: 0 0 6px 0 #0007;
+}
+
+.login__password-wrapper:is(:hover, :active, :focus),
+.login__input-container:is(:hover, :active, :focus) > input {
+  border: 1px solid var(--color-accent);
+}
+
+.login__form button[type="submit"]:hover {
+  opacity: 0.95;
+  box-shadow: 0 0 12px 0 #0007;
+}
+
+.login__button--disabled {
+  pointer-events: none;
+}
+
+.login__button-login {
+  color: #fff;
+  border-bottom: 1px solid var(--color-accent);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.login__button-login span {
+  color: var(--color-accent);
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    flex-direction: column;
+  }
+
+  .login__image {
+    min-height: 180px;
+  }
+
+  .login__wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login {
+    width: 90%;
+  }
+}
