@@ -382,4 +382,4 @@ def create_preference(order_data: OrderData):
 
 @router.get("/test")
 async def test():
-    return {"Greeting": "Hello World!", "MONGO_DB_URL": getenv("DATABASE_URL")}
+    return {"Greeting": "Hello World!"}
