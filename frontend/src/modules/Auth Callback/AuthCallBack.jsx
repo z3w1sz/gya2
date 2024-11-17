@@ -3,7 +3,7 @@ import axios from "axios";
 import "./styles/AuthCallBack.css";
 import { VscLoading } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
-import { useBaseUrl } from "../../../../context/BaseUrlContext";
+import { useBaseUrl } from "../../context/BaseUrlContext";
 
 export const AuthCallBack = () => {
   const { usersUrl } = useBaseUrl();
