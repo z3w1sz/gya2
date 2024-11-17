@@ -3,6 +3,7 @@ from routers import user, products
 from fastapi.middleware.cors import CORSMiddleware
 import mercadopago
 from pydantic import BaseModel
+from uvicorn import Config, Server
 
 app = FastAPI()
 
@@ -51,3 +52,9 @@ async def create_preference(preference_request: PreferenceRequest):
         return preference_response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    config = Config(app=app, host="0.0.0.0", port=5000)
+    server = Server(config)
+    server.run()
