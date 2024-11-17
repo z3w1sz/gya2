@@ -1,10 +1,10 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 
 
 class Product(BaseModel):
-    id: str | None = None
-    post_publication_date: str | None = None
+    id: Optional[str] = None
+    post_publication_date: Optional[str] = None
     name: str
     description: str
     category: str
@@ -62,7 +62,7 @@ class Subcategory(BaseModel):
 
 class Category(BaseModel):
     name: str
-    subcategories: List[Subcategory] | None = None
+    subcategories: Optional[List[Subcategory]] = None
 
 
 class UpdateCategory(BaseModel):

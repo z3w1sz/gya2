@@ -1,9 +1,9 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 
 class User(BaseModel):
-    id: str | None = None
+    id: Optional[str] = None
     email: str
 
 
@@ -56,5 +56,5 @@ class Token(BaseModel):
 
 class UpdatedUser(BaseModel):
     email: str
-    password: str | None = None
-    name: str | None = None
+    password: Optional[str] = None
+    name: Optional[str] = None
