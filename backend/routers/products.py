@@ -378,3 +378,8 @@ def create_preference(order_data: OrderData):
         raise HTTPException(
             status_code=500, detail="Error al crear la preferencia de pago"
         )
+
+
+@router.get("/test")
+async def test():
+    return {"Greeting": "Hello World!"}
