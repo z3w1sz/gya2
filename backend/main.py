@@ -10,7 +10,7 @@ app.include_router(router=user.router)
 app.include_router(router=products.router)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Cambia a la URL de tu frontend
+    allow_origins=["https://gya2-agq9-z3w1szs-projects.vercel.app"],  # Cambia a la URL de tu frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
