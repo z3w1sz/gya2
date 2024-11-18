@@ -147,7 +147,7 @@ async def auth_callback(code: Code, response: Response):
             expires=expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT"),
             httponly=True,
             secure=True,  # True on production
-            samesite="lax",  # Strict on production
+            samesite="Lax",  # Strict on production
         )
         return {"error": "user already exists"}
 
@@ -165,7 +165,7 @@ async def auth_callback(code: Code, response: Response):
         expires=expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT"),
         httponly=True,
         secure=True,  # True on production
-        samesite="lax",  # Strict on production
+        samesite="Lax",  # Strict on production
     )
 
     user_info["cart"] = {"products": []}
