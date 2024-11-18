@@ -3,7 +3,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useBaseUrl } from "../../../../context/BaseUrlContext";
 import axios from "axios";
 
-initMercadoPago("TEST-42bf0ad1-91c7-41c8-a6ee-75c6f8867cf0", {
+initMercadoPago("APP_USR-254ae5f4-0ef9-4dbb-8f28-9826f79049de", {
   locale: "es-AR",
 }); // Reemplaza con tu Public Key
 
