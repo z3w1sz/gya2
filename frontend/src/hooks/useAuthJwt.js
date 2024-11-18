@@ -10,8 +10,8 @@ export const useAuthJwt = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { accessToken, login, logout } = useAuth();
-  const verifyAccessTokenUrl = `${usersUrl}/verify/access_token`;
-  const verifyRefreshTokenUrl = `${usersUrl}/refresh`;
+  const verifyAccessTokenUrl = usersUrl + "/verify/access_token";
+  const verifyRefreshTokenUrl = usersUrl + "/refresh";
 
   const verifyAccessToken = async () => {
     try {
