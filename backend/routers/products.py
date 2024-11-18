@@ -356,9 +356,13 @@ async def get_category(category: str) -> Category:
 
 
 @router.get("/category/test")
-async def category_test():
-    categories_list = list(categories_collection.find())
-    print(categories_list)  # Esto imprimirá todas las categorías para verificar
+async def category_test() -> List[Category]:
+    categories = []
+    for category in list(categories_collection.find()):
+        del category["_id"]
+        categories.append(category)
+
+    return categories
 
 
 @router.get("/store/category/{category}")
