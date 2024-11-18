@@ -345,6 +345,8 @@ async def get_categories() -> List[Category]:
 async def get_category(category: str) -> Category:
     category = categories_collection.find_one({"name": category})
 
+    print(category)
+
     if category is None:
         raise HTTPException(404, "Category not found")
 
