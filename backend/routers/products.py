@@ -356,7 +356,7 @@ async def get_category(category: str) -> Category:
 
 
 @router.get("/cat/test")
-async def category_test() -> List[Category]:
+async def category_test():
     category_db = categories_collection.find_one({"name": "Acero Blanco"})
 
     if category_db is None:
