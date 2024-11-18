@@ -32,11 +32,9 @@ export const Cart = () => {
       .delete(productsUrl + "/cart" + `/${product_code}`, {
         withCredentials: true,
       })
-      .then((response) => {});
-    setTimeout(() => {
-      getCartProducts();
-      window.location.reload();
-    }, [500]);
+      .then((response) => {
+        window.location.reload();
+      });
   };
 
   const calculateTotals = () => {
