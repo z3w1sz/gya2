@@ -47,17 +47,11 @@ export const ProductDetail = ({ secure }) => {
   };
 
   const handleCartClick = () => {
-    axios
-      .put(
-        productsUrl + "/cart",
-        { ...product, quantity: 1 },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      });
+    axios.put(
+      productsUrl + "/cart",
+      { ...product, quantity: 1 },
+      { withCredentials: true }
+    );
   };
 
   const handleProductDelete = (code) => {
