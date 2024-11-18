@@ -341,8 +341,10 @@ async def get_categories() -> List[Category]:
     return categories
 
 
+# Subcategory
 @router.get("/category/{category}")
 async def get_category(category: str) -> Category:
+
     category_clean = category.replace("%20", " ")
 
     category_db = categories_collection.find_one({"name": category_clean})
