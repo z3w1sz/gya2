@@ -321,7 +321,9 @@ async def get_cart_products_number(request: Request):
     if user is None:
         raise HTTPException(400, "Bad refresh token")
 
-    return {"number": user.cart.products.length}
+    user_dict = dict(user)
+
+    return {"number": user_dict["cart"]["products"].length}
 
 
 # Categories
