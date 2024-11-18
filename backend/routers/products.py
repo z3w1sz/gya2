@@ -344,8 +344,9 @@ async def get_categories() -> List[Category]:
 # Subcategory
 @router.get("/category/{category}")
 async def get_category(category: str) -> Category:
+    category_clean = category.replace("%20", " ")
 
-    category_db = categories_collection.find_one({"name": category})
+    category_db = categories_collection.find_one({"name": category_clean})
 
     if category_db is None:
         raise HTTPException(404, "Category not found")
