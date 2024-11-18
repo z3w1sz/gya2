@@ -347,7 +347,6 @@ async def get_category(category: str) -> Category:
     category_db = categories_collection.find_one({"name": category})
 
     print(category_db)
-    print(dict(category_db))
 
     if category_db is None:
         raise HTTPException(404, "Category not found")
