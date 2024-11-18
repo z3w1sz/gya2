@@ -22,6 +22,7 @@ export const AuthCallBack = () => {
       .then((response) => {
         // Manejar la respuesta aquí si es necesario
         /* navigate("/store"); */
+        console.log(response);
       })
       .catch((error) => {
         /* navigate("/"); */
