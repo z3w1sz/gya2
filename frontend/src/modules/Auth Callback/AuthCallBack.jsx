@@ -3,8 +3,10 @@ import axios from "axios";
 import "./styles/AuthCallBack.css";
 import { VscLoading } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
+import { useBaseUrl } from "../../context/BaseUrlContext";
 
 export const AuthCallBack = () => {
+  const { usersUrl } = useBaseUrl();
   const navigate = useNavigate();
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -13,7 +15,7 @@ export const AuthCallBack = () => {
     // Enviar el código en el formato esperado
     axios
       .post(
-        "http://localhost:8000/users/auth/callback",
+        usersUrl + "/auth/callback",
         { code: code },
         { withCredentials: true }
       )

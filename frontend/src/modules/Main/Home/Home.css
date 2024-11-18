@@ -9,7 +9,7 @@
 }
 
 .home-image__wrapper {
-  background-image: linear-gradient(#0005, #0005), url("accessories-bg.webp");
+  background-image: linear-gradient(#0005, #0005), url("/accessories-bg.webp");
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 16px 0 #0007;
