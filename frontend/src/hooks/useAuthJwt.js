@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
+import { useBaseUrl } from "../context/BaseUrlContext";
 
 export const useAuthJwt = () => {
+  const { usersUrl } = useBaseUrl();
+
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const { accessToken, login, logout } = useAuth();
-  const verifyAccessTokenUrl =
-    "http://localhost:8000/users/verify/access_token";
-  const verifyRefreshTokenUrl = "http://localhost:8000/users/refresh";
+  const verifyAccessTokenUrl = `${usersUrl}/verify/access_token`;
+  const verifyRefreshTokenUrl = `${usersUrl}/refresh`;
 
   const verifyAccessToken = async () => {
     try {
