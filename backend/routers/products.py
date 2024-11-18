@@ -323,7 +323,11 @@ async def get_cart_products_number(request: Request):
 
     user_dict = dict(user)
 
-    return {"number": user_dict["cart"]["products"].length}
+    # Usar len() para obtener el número de productos
+    if "cart" in user_dict and "products" in user_dict["cart"]:
+        return {"number": len(user_dict["cart"]["products"])}
+    else:
+        raise HTTPException(400, "Cart or products not found")
 
 
 # Categories
