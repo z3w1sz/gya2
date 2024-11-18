@@ -357,10 +357,8 @@ async def get_category(category: str) -> Category:
 
 @router.get("/category/test")
 async def category_test():
-    category_db = categories_collection.find_one({"name": "Acero Blanco"})
-    if category_db is None:
-        raise HTTPException(404, "Category not found")
-    print(dict(category_db))
+    categories_list = list(categories_collection.find())
+    print(categories_list)  # Esto imprimirá todas las categorías para verificar
 
 
 @router.get("/store/category/{category}")
@@ -406,8 +404,3 @@ def create_preference(order_data: OrderData):
         raise HTTPException(
             status_code=500, detail="Error al crear la preferencia de pago"
         )
-
-
-@router.get("/test")
-async def test():
-    return {"Greeting": "Hello World!"}
