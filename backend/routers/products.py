@@ -343,14 +343,16 @@ async def get_categories() -> List[Category]:
 
 @router.get("/category/{category}")
 async def get_category(category: str) -> Category:
-    category = categories_collection.find_one({"name": category})
-
     print(category)
+    category_db = categories_collection.find_one({"name": category})
 
-    if category is None:
+    print(category_db)
+    print(dict(category_db))
+
+    if category_db is None:
         raise HTTPException(404, "Category not found")
 
-    category_dict = dict(category)
+    category_dict = dict(category_db)
 
     del category_dict["_id"]
 
