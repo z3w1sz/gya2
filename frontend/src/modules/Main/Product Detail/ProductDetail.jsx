@@ -54,9 +54,7 @@ export const ProductDetail = ({ secure }) => {
         { withCredentials: true }
       )
       .then((response) => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        window.location.reload();
       });
   };
 
