@@ -343,7 +343,9 @@ async def get_categories() -> List[Category]:
 
 @router.get("/category/{category}")
 async def get_category(category: str) -> Category:
-    category_db = categories_collection.find_one({"name": category})
+    category_clean = category.replace("%20", " ")
+
+    category_db = categories_collection.find_one({"name": category_clean})
 
     if category_db is None:
         raise HTTPException(404, "Category not found")
@@ -353,18 +355,6 @@ async def get_category(category: str) -> Category:
     del category_dict["_id"]
 
     return Category(**category_dict)
-
-
-@router.get("/cat/test")
-async def category_test():
-    category_db = categories_collection.find_one({"name": "Acero Blanco"})
-
-    if category_db is None:
-        raise HTTPException(404, "Category not found")
-
-    category_dict = dict(category_db)
-
-    print(category_dict)
 
 
 @router.get("/store/category/{category}")
