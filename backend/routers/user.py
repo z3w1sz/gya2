@@ -313,7 +313,7 @@ async def update_user(user: UpdatedUser, request: Request, response: Response):
         expires=expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT"),
         httponly=True,
         secure=True,  # True on production
-        samesite="strict",  # Strict on production
+        samesite="None",  # Strict on production
     )
     user_dict["refresh_token"] = refresh_token
     if user_dict["password"]:
@@ -358,7 +358,7 @@ async def login_account(user: UserCreated, response: Response):
         expires=expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT"),
         httponly=True,
         secure=True,  # Cambiar a True en producción
-        samesite="strict",  # Cambiar a 'strict' en producción
+        samesite="None",  # Cambiar a 'strict' en producción
     )
 
     return {"state": "success"}
