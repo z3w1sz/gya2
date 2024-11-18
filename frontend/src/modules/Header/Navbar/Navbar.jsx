@@ -13,6 +13,7 @@ import { useBaseUrl } from "../../../context/BaseUrlContext";
 export const Navbar = ({ secure }) => {
   const { isValid } = useJwtAuth();
   const [menuActive, setMenuActive] = useState(false);
+  const [numberOfCartProducts, setNumberOfCartProducts] = useState(0);
 
   const { setIsScrollActive } = useIsScrollActive();
 
@@ -32,13 +33,16 @@ export const Navbar = ({ secure }) => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response);
+        setNumberOfCartProducts(response.data.number);
       });
   };
 
   useEffect(() => {
     getProductsNumber();
-  }, []);
+    if (numberOfCartProducts > 9) {
+      setNumberOfCartProducts("+9");
+    }
+  }, [numberOfCartProducts]);
 
   return (
     <>
@@ -91,9 +95,20 @@ export const Navbar = ({ secure }) => {
               <Link className="navbar__item" to="/help" onClick={toggleMenu}>
                 <FiHelpCircle title="Help" fontSize="1.6rem" />
               </Link>
-              <Link className="navbar__item" to="/cart" onClick={toggleMenu}>
-                <CartIcon numberOfProducts="+9" />
-              </Link>
+              {isValid ? (
+                <Link className="navbar__link item--icon link--cart" to="/cart">
+                  <CartIcon
+                    numberOfProducts={numberOfCartProducts.toString()}
+                  />
+                </Link>
+              ) : (
+                <Link
+                  to="/account"
+                  className="navbar__link item--icon link--cart"
+                >
+                  <CartIcon numberOfProducts="" />
+                </Link>
+              )}
             </div>
 
             {/* Menú en pantallas grandes */}
@@ -133,7 +148,9 @@ export const Navbar = ({ secure }) => {
                     className="navbar__link item--icon link--cart"
                     to="/cart"
                   >
-                    <CartIcon numberOfProducts="+9" />
+                    <CartIcon
+                      numberOfProducts={numberOfCartProducts.toString()}
+                    />
                   </Link>
                 ) : (
                   <Link
