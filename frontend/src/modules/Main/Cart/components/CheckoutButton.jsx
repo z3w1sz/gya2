@@ -5,7 +5,7 @@ import axios from "axios";
 
 initMercadoPago("APP_USR-254ae5f4-0ef9-4dbb-8f28-9826f79049de", {
   locale: "es-AR",
-}); // Reemplaza con tu Public Key
+});
 
 const CheckoutButton = ({ orderData }) => {
   const [preferenceId, setPreferenceId] = useState(null);
