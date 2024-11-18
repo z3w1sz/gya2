@@ -26,6 +26,9 @@ export const AuthCallBack = () => {
       .catch((error) => {
         navigate("/");
       });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1200);
   }, []);
 
   return (
