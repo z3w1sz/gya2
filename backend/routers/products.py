@@ -310,6 +310,20 @@ async def update_cart_quantity(
     return {"message": "Product quantity updated successfully"}
 
 
+@router.get("/cart/number/of/products")
+async def get_cart_products_number(request: Request):
+    refresh_token: str = get_refresh_token(request=request)
+    refresh_token_decoded = decode_token(
+        refresh_token, secret=getenv("REFRESH_TOKEN_SECRET")
+    )
+    user = user_collection.find_one({"email": refresh_token_decoded["sub"]})
+
+    if user is None:
+        raise HTTPException(400, "Bad refresh token")
+
+    return {"number": user.cart.products.length}
+
+
 # Categories
 @router.get("/categories")
 async def get_categories() -> List[Category]:

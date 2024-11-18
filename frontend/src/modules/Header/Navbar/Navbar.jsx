@@ -7,6 +7,8 @@ import { FiSearch } from "react-icons/fi";
 import { AccountIcon } from "./components/AccountIcon";
 import { CartIcon } from "./components/CartIcon";
 import { useIsScrollActive } from "../../../context/IsScrollActive";
+import axios from "axios";
+import { useBaseUrl } from "../../../context/BaseUrlContext";
 
 export const Navbar = ({ secure }) => {
   const { isValid } = useJwtAuth();
@@ -21,6 +23,22 @@ export const Navbar = ({ secure }) => {
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
+
+  const { productsUrl } = useBaseUrl();
+
+  const getProductsNumber = () => {
+    axios
+      .get(productsUrl + "/cart/number/of/products", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
+  useEffect(() => {
+    getProductsNumber();
+  }, []);
 
   return (
     <>
@@ -122,7 +140,7 @@ export const Navbar = ({ secure }) => {
                     to="/account"
                     className="navbar__link item--icon link--cart"
                   >
-                    <CartIcon numberOfProducts="+9" />
+                    <CartIcon numberOfProducts="" />
                   </Link>
                 )}
               </li>
