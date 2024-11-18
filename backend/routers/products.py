@@ -357,12 +357,14 @@ async def get_category(category: str) -> Category:
 
 @router.get("/cat/test")
 async def category_test() -> List[Category]:
-    categories = []
-    for category in list(categories_collection.find()):
-        del category["_id"]
-        categories.append(category)
+    category_db = categories_collection.find_one({"name": "Acero Blanco"})
 
-    return categories
+    if category_db is None:
+        raise HTTPException(404, "Category not found")
+
+    category_dict = dict(category_db)
+
+    print(category_dict)
 
 
 @router.get("/store/category/{category}")
