@@ -355,7 +355,7 @@ async def get_category(category: str) -> Category:
     return Category(**category_dict)
 
 
-@router.get("/category/test")
+@router.get("/cat/test")
 async def category_test() -> List[Category]:
     categories = []
     for category in list(categories_collection.find()):
