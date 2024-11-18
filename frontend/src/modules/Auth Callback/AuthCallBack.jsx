@@ -21,14 +21,14 @@ export const AuthCallBack = () => {
       )
       .then((response) => {
         // Manejar la respuesta aquí si es necesario
-        navigate("/store");
+        /* navigate("/store"); */
       })
       .catch((error) => {
-        navigate("/");
+        /* navigate("/"); */
       });
-    setTimeout(() => {
+    /* setTimeout(() => {
       window.location.reload();
-    }, 1200);
+    }, 1200); */
   }, []);
 
   return (
