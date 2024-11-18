@@ -14,10 +14,10 @@ import { IsPageStoreChangingProvider } from "./context/IsPageStoreChangingContex
 
 createRoot(document.getElementById("root")).render(
   /* <StrictMode> */
-  <AuthProvider>
-    <AuthJwtProvider>
-      <PopupProvider>
-        <BaseUrlProvider>
+  <BaseUrlProvider>
+    <AuthProvider>
+      <AuthJwtProvider>
+        <PopupProvider>
           <IsRegisterProvider>
             <IsScrollActiveProvider>
               <IsPageStoreChangingProvider>
@@ -27,9 +27,9 @@ createRoot(document.getElementById("root")).render(
               </IsPageStoreChangingProvider>
             </IsScrollActiveProvider>
           </IsRegisterProvider>
-        </BaseUrlProvider>
-      </PopupProvider>
-    </AuthJwtProvider>
-  </AuthProvider>
+        </PopupProvider>
+      </AuthJwtProvider>
+    </AuthProvider>
+  </BaseUrlProvider>
   /* </StrictMode> */
 );
