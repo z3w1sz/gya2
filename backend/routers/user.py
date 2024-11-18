@@ -146,8 +146,8 @@ async def auth_callback(code: Code, response: Response):
             value=user_dict["refresh_token"],
             expires=expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT"),
             httponly=True,
-            secure=True,  # True on production
-            samesite="strict",  # Strict on production
+            secure=False,  # True on production
+            samesite="none",  # Strict on production
         )
         return {"error": "user already exists"}
 
