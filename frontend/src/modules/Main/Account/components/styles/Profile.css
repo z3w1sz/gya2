@@ -76,6 +76,7 @@
 .profile__logout-button {
   display: flex;
   gap: 0.25rem;
+  color: #fff;
   background-color: #111 !important;
 }
 
