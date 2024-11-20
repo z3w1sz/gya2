@@ -41,6 +41,7 @@ async def create_product(product: Product):
     del product_dict["id"]
     post_publication_date = datetime.now().strftime("%d-%m-%Y")
     product_dict["post_publication_date"] = post_publication_date
+    product_dict["name"] = product_dict["name"].lower().capitalize()
     products_collection.insert_one(product_dict)
 
 
