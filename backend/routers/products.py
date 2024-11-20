@@ -128,12 +128,14 @@ async def get_products_home() -> List[ProductSimple]:
 
 @router.get("/store/{subcategory}")
 async def get_products_for_subcategory(subcategory: str, page: int = Query(1, ge=1)):
+    subcategory_clean = subcategory.replace("%20", " ")
+
     limit_per_page = 21
     init = (page - 1) * limit_per_page
 
     # Obtener productos paginados desde MongoDB
     products_cursor = (
-        products_collection.find({"subcategory": subcategory})
+        products_collection.find({"subcategory": subcategory_clean})
         .skip(init)
         .limit(limit_per_page)
     )
