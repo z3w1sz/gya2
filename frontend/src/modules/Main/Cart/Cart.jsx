@@ -159,7 +159,7 @@ export const Cart = () => {
                         onClick={() => handleProductCartDelete(product.code)}
                       >
                         <button>
-                          <LiaTimesSolid fontSize="1.4rem" />
+                          <LiaTimesSolid fontSize="1.4rem" color="#fff" />
                         </button>
                       </div>
                     </div>

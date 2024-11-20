@@ -89,7 +89,7 @@ export const Search = () => {
   return (
     <div className="search">
       <div className="search-title">
-        <h2>Buscar resultados</h2>
+        <h2>Buscar productos</h2>
       </div>
       <div className="search-bar">
         <div

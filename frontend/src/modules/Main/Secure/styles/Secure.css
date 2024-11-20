@@ -41,6 +41,7 @@
 .secure-info__wrapper textarea,
 .secure-info__wrapper select {
   padding: 10px 12px;
+  color: #fff;
 }
 
 .secure-info__wrapper input,

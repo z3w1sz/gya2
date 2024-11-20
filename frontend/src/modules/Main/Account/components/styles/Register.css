@@ -43,6 +43,10 @@
   background-color: #333;
 }
 
+.register__google-button span {
+  color: #fff;
+}
+
 .register__divider {
   display: flex;
   justify-content: space-between;
