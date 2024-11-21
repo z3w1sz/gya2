@@ -255,58 +255,47 @@ export const Secure = () => {
             <h3>Categoría</h3>
             <div className="secure-info__wrapper">
               <label htmlFor="secure-category">Categoría del producto</label>
-              <input
-                type="text"
-                list="secure-category"
+              <select
+                id="secure-category"
                 onChange={onInputChange}
                 name="category"
                 value={category}
-                placeholder="Acero blanco"
                 className={`${
                   fieldEmpty.category ? "secure-input__empty" : ""
                 } ${category.trim() !== "" ? "secure-input__completed" : ""}`}
-              />
-              <select id="secure-category">
-                {categories.map((category, index) => {
-                  return (
-                    <option key={index} value={category.name}>
-                      {category.name}
-                    </option>
-                  );
-                })}
+              >
+                {categories.map((category, index) => (
+                  <option key={index} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
+
               <label
                 htmlFor="secure-subcategory"
                 className="secure-subcategory__label"
               >
                 Subcategoría del producto
               </label>
-              <input
-                type="text"
-                list="secure-subcategory"
+              <select
+                id="secure-subcategory"
                 onChange={onInputChange}
                 name="subcategory"
-                placeholder="Collares AB"
                 value={subcategory}
                 className={`${
                   fieldEmpty.subcategory ? "secure-input__empty" : ""
                 } ${
                   subcategory.trim() !== "" ? "secure-input__completed" : ""
                 }`}
-              />
-              <select type="text" id="secure-subcategory">
-                {categories.map((category_db) => {
-                  return (
-                    category_db.name === category &&
-                    category_db.subcategories.map((subcategory_db, index) => {
-                      return (
-                        <option key={index} value={subcategory_db.name}>
-                          {subcategory_db.name}
-                        </option>
-                      );
-                    })
-                  );
-                })}
+                disabled={!category}
+              >
+                {categories
+                  .find((category_db) => category_db.name === category)
+                  ?.subcategories.map((subcategory_db, index) => (
+                    <option key={index} value={subcategory_db.name}>
+                      {subcategory_db.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -325,13 +314,13 @@ export const Secure = () => {
                   fieldEmpty.material ? "secure-input__empty" : ""
                 } ${material.trim() !== "" ? "secure-input__completed" : ""}`}
               />
-              <select id="secure-material">
+              <datalist id="secure-material">
                 <option value="Acero quirurgico">Acero quirurgico</option>
                 <option value="Acero dorado">Acero dorado</option>
                 <option value="Acero blanco">Acero blanco</option>
                 <option value="Malla de ecocuero">Malla de ecocuero</option>
                 <option value="Plata 925">Plata 925</option>
-              </select>
+              </datalist>
             </div>
           </div>
         </div>
