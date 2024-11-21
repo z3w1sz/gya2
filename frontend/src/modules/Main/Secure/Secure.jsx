@@ -264,6 +264,9 @@ export const Secure = () => {
                   fieldEmpty.category ? "secure-input__empty" : ""
                 } ${category.trim() !== "" ? "secure-input__completed" : ""}`}
               >
+                <option value="" disabled>
+                  Selecciona una categoría
+                </option>
                 {categories.map((category, index) => (
                   <option key={index} value={category.name}>
                     {category.name}
