@@ -266,7 +266,7 @@ export const Secure = () => {
                   fieldEmpty.category ? "secure-input__empty" : ""
                 } ${category.trim() !== "" ? "secure-input__completed" : ""}`}
               />
-              <datalist id="secure-category">
+              <select id="secure-category">
                 {categories.map((category, index) => {
                   return (
                     <option key={index} value={category.name}>
@@ -274,7 +274,7 @@ export const Secure = () => {
                     </option>
                   );
                 })}
-              </datalist>
+              </select>
               <label
                 htmlFor="secure-subcategory"
                 className="secure-subcategory__label"
@@ -294,7 +294,7 @@ export const Secure = () => {
                   subcategory.trim() !== "" ? "secure-input__completed" : ""
                 }`}
               />
-              <datalist type="text" id="secure-subcategory">
+              <select type="text" id="secure-subcategory">
                 {categories.map((category_db) => {
                   return (
                     category_db.name === category &&
@@ -307,7 +307,7 @@ export const Secure = () => {
                     })
                   );
                 })}
-              </datalist>
+              </select>
             </div>
           </div>
           <div>
@@ -325,13 +325,13 @@ export const Secure = () => {
                   fieldEmpty.material ? "secure-input__empty" : ""
                 } ${material.trim() !== "" ? "secure-input__completed" : ""}`}
               />
-              <datalist id="secure-material">
+              <select id="secure-material">
                 <option value="Acero quirurgico">Acero quirurgico</option>
                 <option value="Acero dorado">Acero dorado</option>
                 <option value="Acero blanco">Acero blanco</option>
                 <option value="Malla de ecocuero">Malla de ecocuero</option>
                 <option value="Plata 925">Plata 925</option>
-              </datalist>
+              </select>
             </div>
           </div>
         </div>
