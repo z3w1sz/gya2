@@ -67,7 +67,8 @@
 }
 
 .secure-info__wrapper option {
-  background-color: #ccc;
+  background-color: #222;
+  color: #fff;
 }
 
 .secure-info__wrapper textarea {
@@ -75,8 +76,7 @@
   min-height: 180px;
 }
 
-#secure-description-name,
-#secure-category {
+#secure-description-name {
   margin-bottom: 1.2rem;
 }
 
