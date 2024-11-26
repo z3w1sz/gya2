@@ -52,7 +52,11 @@ export const Navbar = ({ secure }) => {
             <div className="navbar__logo-container">
               <li className="navbar__item item--logo">
                 <Link className="navbar__link" to="/">
-                  <img className="navbar__medium-logo" src="/logo.svg" alt="" />
+                  <img
+                    className="navbar__medium-logo"
+                    src="/logo.webp"
+                    alt=""
+                  />
                 </Link>
               </li>
             </div>
