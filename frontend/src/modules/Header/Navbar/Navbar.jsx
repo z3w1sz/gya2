@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./styles/Navbar.css";
 import { useJwtAuth } from "../../../context/AuthJwtContext";
@@ -54,7 +54,7 @@ export const Navbar = ({ secure }) => {
                 <Link className="navbar__link" to="/">
                   <img
                     className="navbar__medium-logo"
-                    src="/logo.webp"
+                    src="/logo-mobile.webp"
                     alt=""
                   />
                 </Link>
