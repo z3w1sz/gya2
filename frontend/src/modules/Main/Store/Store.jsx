@@ -21,37 +21,31 @@ export const Store = () => {
   const [priceMax, setPriceMax] = useState("");
   const [order, setOrder] = useState(null); // "asc" o "desc"
   const [totalProducts, setTotalProducts] = useState(0);
-  const [page, setPage] = useState(1); // Página actual
+  const [page, setPage] = useState(1); // Esto es solo para renderizar el valor de la página
   const limitPerPage = 21;
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
   }, []);
 
-  const getProductsForSubcategory = async (page) => {
-    try {
-      const response = await axios.get(
-        `${productsUrl}/store/${subcategory}/?page=${page}`
-      );
-      setProducts(response.data.products);
-      setTotalProducts(response.data.total || 0);
-    } catch (error) {
-      console.error("Error fetching products by subcategory:", error);
-    }
+  const getProductsForSubcategory = (page) => {
+    axios
+      .get(`${productsUrl}/store/${subcategory}/?page=${page}`)
+      .then((response) => {
+        setProducts(response.data.products);
+        setTotalProducts(response.data.total || 0);
+      });
   };
 
-  const getProducts = async (page) => {
-    try {
-      const response = await axios.get(`${productsUrl}/store?page=${page}`);
-      setProducts(response.data.products);
-      setTotalProducts(response.data.total || 0);
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
+  const getProducts = (page) => {
+    axios
+      .get(`${productsUrl}/store?page=${page}`)
+      .then((response) => {
+        setProducts(response.data.products);
+        setTotalProducts(response.data.total || 0);
+      })
+      .catch((error) => console.error("Error fetching products:", error));
   };
 
   const getCategories = async () => {
@@ -71,6 +65,16 @@ export const Store = () => {
     }
     getCategories();
   }, [page, subcategory]);
+
+  const toggleCategory = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(
+        selectedCategories.filter((cat) => cat !== category)
+      );
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
 
   const filterProducts = () => {
     let filtered = products;
@@ -97,11 +101,12 @@ export const Store = () => {
   };
 
   useEffect(() => {
-    setFilteredProducts(filterProducts());
+    const productsAfterFilter = filterProducts();
+    setFilteredProducts(productsAfterFilter);
   }, [products, selectedCategories, priceMin, priceMax]);
 
   useEffect(() => {
-    const sortedProducts = [...filteredProducts];
+    let sortedProducts = [...filteredProducts];
     if (order === "asc") {
       sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     } else if (order === "desc") {
@@ -117,7 +122,9 @@ export const Store = () => {
   const goToPage = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setPage(pageNumber);
-      setTimeout(() => setIsPageStoreChanging(true), 200);
+      setTimeout(() => {
+        setIsPageStoreChanging(true);
+      }, [200]);
     }
   };
 
@@ -127,35 +134,8 @@ export const Store = () => {
     setIsMobileFilterActive(!isMobileFilterActive);
   };
 
-  useEffect(() => {
-    const lazyLoadImages = document.querySelectorAll(
-      ".store-product__img.lazy"
-    );
-
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target;
-            const bgImageUrl = element.getAttribute("data-bg");
-            if (bgImageUrl) {
-              element.style.backgroundImage = `url(${bgImageUrl})`;
-              element.classList.remove("lazy");
-              observer.unobserve(element);
-            }
-          }
-        });
-      },
-      { rootMargin: "0px", threshold: 0.1 }
-    );
-
-    lazyLoadImages.forEach((img) => observer.observe(img));
-
-    return () => observer.disconnect();
-  }, [filteredProducts]);
-
   return (
-    <div className={"store " + (isMobile ? "store-mobile" : "")}>
+    <div className={"store " + `${isMobile ? "store-mobile" : ""}`}>
       <div className="store__filters-container">
         <div className="store__filter-wrapper">
           <h2>Filtros</h2>
@@ -183,6 +163,7 @@ export const Store = () => {
               ))}
             </div>
           </div>
+
           {isMobile && isMobileFilterActive === false && (
             <MdOutlineKeyboardDoubleArrowDown
               fontSize="1.4rem"
@@ -262,10 +243,8 @@ export const Store = () => {
               </div>
             </ul>
           </div>
-          {/* Aquí puedes agregar la lógica para mostrar filtros dinámicos */}
         </div>
       </div>
-
       <div className="store-products__main-container">
         <div className="store-products__container">
           {filteredProducts.map((product, index) => (
@@ -275,8 +254,8 @@ export const Store = () => {
               key={index}
             >
               <div
-                className="store-product__img lazy"
-                data-bg={product.images[0]}
+                className="store-product__img"
+                style={{ backgroundImage: `url("${product.images[0]}")` }}
               ></div>
               <div className="store-product__title">
                 <h3>{product.name}</h3>
