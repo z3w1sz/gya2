@@ -1,4 +1,4 @@
-import { BrowserRouter as Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./modules/Main/Home/Home";
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
