@@ -159,6 +159,109 @@ export const Store = () => {
       <div className="store__filters-container">
         <div className="store__filter-wrapper">
           <h2>Filtros</h2>
+          <div className="store-filter__filter-selected">
+            <div className="store-filter__selected-filter">
+              {order === "asc"
+                ? "Menor precio"
+                : order === "desc"
+                ? "Mayor precio"
+                : "Sin ordenar"}
+            </div>
+          </div>
+          <div className="store-filter__filter-selected">
+            <div className="store-filter__categorie-selected">
+              {selectedCategories.map((category, index) => (
+                <div key={index} className="store-filter__selected-filter">
+                  {category}
+                  <IoMdClose
+                    fontSize="1.2rem"
+                    onClick={() => toggleCategory(category)}
+                    color="#d4af37"
+                    cursor="pointer"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {isMobile && isMobileFilterActive === false && (
+            <MdOutlineKeyboardDoubleArrowDown
+              fontSize="1.4rem"
+              onClick={handleFilterClick}
+              cursor={"pointer"}
+            />
+          )}
+          {isMobile && isMobileFilterActive && (
+            <MdClose
+              fontSize="1.4rem"
+              onClick={handleFilterClick}
+              cursor={"pointer"}
+            />
+          )}
+        </div>
+        <div
+          className={
+            "store-filter__wrapper2 " +
+            `${isMobileFilterActive ? "wrapper2--visible" : "wrapper2--hidden"}`
+          }
+        >
+          <div className="store-filter-container">
+            <h4>Categorías</h4>
+            <ul>
+              {categories.map((category, index) => (
+                <li key={index}>
+                  <a
+                    onClick={() => toggleCategory(category.name)}
+                    className={
+                      selectedCategories.includes(category.name)
+                        ? "selected"
+                        : ""
+                    }
+                  >
+                    {category.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="store-filter-container">
+            <h4>Precio</h4>
+            <ul>
+              <li>
+                <a onClick={() => setOrder(null)}>Más relevantes</a>
+              </li>
+              <li>
+                <a onClick={() => setOrder("asc")}>Menor precio</a>
+              </li>
+              <li>
+                <a onClick={() => setOrder("desc")}>Mayor precio</a>
+              </li>
+              <div className="store-filter__select-price">
+                <input
+                  type="number"
+                  placeholder="Mínimo"
+                  value={priceMin}
+                  onChange={(e) => setPriceMin(e.target.value)}
+                  min={0}
+                  max={100000}
+                />
+                <div className="store-filter-price__divider"></div>
+                <input
+                  type="number"
+                  placeholder="Máximo"
+                  value={priceMax}
+                  onChange={(e) => setPriceMax(e.target.value)}
+                  min={0}
+                  max={100000}
+                />
+                <TbSquareRoundedArrowRightFilled
+                  fontSize="1.6rem"
+                  color="#d4af37"
+                  className="select-price-icon"
+                  onClick={filterProducts}
+                />
+              </div>
+            </ul>
+          </div>
           {/* Aquí puedes agregar la lógica para mostrar filtros dinámicos */}
         </div>
       </div>
