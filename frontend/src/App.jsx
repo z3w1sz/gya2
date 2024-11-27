@@ -1,19 +1,11 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Route, Routes } from "react-router-dom";
 import { Home } from "./modules/Main/Home/Home";
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import ScrollToTop from "./components/ScrollToTop";
 import { Footer } from "./modules/Footer/Footer";
-import { Write } from "./modules/Main/Write/Write";
 import { AuthCallBack } from "./modules/Auth Callback/AuthCallBack";
 import { Header } from "./modules/Header/Header";
-import { useJwtAuth } from "./context/AuthJwtContext";
 import { Search } from "./modules/Main/Search/Search";
 import { ProductDetail } from "./modules/Main/Product Detail/ProductDetail";
 import { Cart } from "./modules/Main/Cart/Cart";
@@ -53,8 +45,6 @@ function App() {
   }, []);
 
   // Verify if the refresh_token is valid, if is valid generate a access_token it's return a true or false
-  const { isValid } = useJwtAuth();
-
   const { popup } = usePopup();
 
   const { isScrollActive } = useIsScrollActive();
@@ -70,8 +60,6 @@ function App() {
       }
     }
   }, [popup, isScrollActive]);
-
-  const location = useLocation();
 
   const { secure } = useIsSecure();
 
@@ -121,15 +109,6 @@ function App() {
           )}
           <Route path="/auth/callback" element={<AuthCallBack />} />
 
-          {/* 
-          Here go the protected routes because this check
-          if are valid the tokens 
-        */}
-          {isValid && (
-            <>
-              <Route path="/write" element={<Write />} />
-            </>
-          )}
           <Route path="/*" element={<Home />} />
         </Routes>
       </main>

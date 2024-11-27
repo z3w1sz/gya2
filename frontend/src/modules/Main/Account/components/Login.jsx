@@ -8,7 +8,7 @@ import { IoMdClose } from "react-icons/io";
 import { useForm } from "../../../../hooks/useForm";
 import axios from "axios";
 import { useBaseUrl } from "../../../../context/BaseUrlContext";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [showAlert, setShowAlert] = useState(false);
