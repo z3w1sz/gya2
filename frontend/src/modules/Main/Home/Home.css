@@ -111,6 +111,17 @@ h1 {
   gap: 1rem;
 }
 
+.newest-product__img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.newest-product__img.lazy {
+  background-image: none; /* Sin imagen cargada inicialmente */
+}
+
 /* Para pantallas pequeñas */
 @media (max-width: 768px) {
   .home-image__wrapper {
