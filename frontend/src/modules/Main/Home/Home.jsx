@@ -28,23 +28,10 @@ export const Home = () => {
     setHoveredProducts((prev) => ({ ...prev, [productCode]: false }));
   };
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
-  }, [isMobile]);
-
   return (
     <>
       <div className="home-container">
-        <div
-          className="home-image__wrapper"
-          style={{
-            backgroundImage: `linear-gradient(#0005, #0005), url(${
-              isMobile ? "/accessories-bg-mobile.webp" : "/accessories-bg.webp"
-            })`,
-          }}
-        >
+        <div className="home-image__wrapper">
           <div className="home-main__container flex-center">
             <div className="home-main__title">
               <h1>Brilla con estilo</h1>
